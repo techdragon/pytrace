@@ -34,6 +34,6 @@ setup(name='pytrace',
                              include_dirs=["ext",
                                            "/opt/local/include",
                                            "/opt/local/lib"], # where macports installs protobuf
-                             libraries=["protobuf-c", "sqlite3"],
+                             libraries=["libprotobuf-c", "sqlite3"],
                              extra_compile_args=extra_compile_args)],
       entry_points={'console_scripts': ['pytrace=pytrace.__main__:main']})
