@@ -5,7 +5,7 @@ OPTIMIZATIONS = False # by default extension are compiled with O2
 extra_compile_args = [] if OPTIMIZATIONS else ["-O0"]
 
 setup(name='pytrace',
-      version='0.2.1',
+      version='0.2.2',
       description='pytrace is a fast python tracer. pytrace records function calls, arguments and return values. traces aid debugging, profiling and obviate logging.',
       author='Alon Horev',
       author_email='alonho@gmail.com',
@@ -32,7 +32,8 @@ setup(name='pytrace',
                                       "ext/record_pb.c",
                                       "ext/shared_ring.c"],
                              include_dirs=["ext",
-                                           "/opt/local/include"], # where macports installs protobuf
+                                           "/opt/local/include",
+                                           "/opt/local/lib"], # where macports installs protobuf
                              libraries=["protobuf-c", "sqlite3"],
                              extra_compile_args=extra_compile_args)],
       entry_points={'console_scripts': ['pytrace=pytrace.__main__:main']})
