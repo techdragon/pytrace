@@ -3,6 +3,7 @@ from distutils.core import Extension
 
 OPTIMIZATIONS = False # by default extension are compiled with O2
 extra_compile_args = [] if OPTIMIZATIONS else ["-O0"]
+extra_link_args = ["-v"]
 
 setup(name='pytrace',
       version='0.2.2',
@@ -34,6 +35,7 @@ setup(name='pytrace',
                              include_dirs=["ext",
                                            "/opt/local/include",
                                            "/opt/local/lib"], # where macports installs protobuf
-                             libraries=["libprotobuf-c", "sqlite3"],
-                             extra_compile_args=extra_compile_args)],
+                             libraries=["protobuf-c", "sqlite3"],
+                             extra_compile_args=extra_compile_args,
+                             extra_link_args=extra_link_args)],
       entry_points={'console_scripts': ['pytrace=pytrace.__main__:main']})
